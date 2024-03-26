@@ -23,13 +23,13 @@ class Student{
     }
     public int getRoll(){return roll;}
 }
-// class CGPAComparator implements Comparator<Student>{
+class CGPAComparator implements Comparator<Student>{
 
-//     @Override
-//     public int compare(Student a, Student b){
-//         return Double.compare(a.getCGPA(), b.getCGPA());
-//     }
-// }
+    @Override
+   public int compare(Student a, Student b){
+        return Double.compare(a.getCGPA(), b.getCGPA());
+    }
+}
 class Major{
     private double credit = 3;
     private double WGPA=0;
@@ -233,13 +233,18 @@ class EmbeddedSystems extends Courses{
 
 }
 class GPArank{
-    List<Student> students;
+    private List<Student> students;
+    public void sort(){
     for(int i=0;i < students.size();i++){
         for (int j = 0; j < students.size(); j++) {
             if (students.get(j).CGPA > students.get(j+1).CGPA) {
-                Student temp = students.get(j);
+                Student a = students.get(j);
+                Student b = students.get(j+1);
+                students.set(j+1,a);
+                students.set(j,b);
             }
         }
+    }
     }
 }
 public class School {
